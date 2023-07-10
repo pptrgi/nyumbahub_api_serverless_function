@@ -9,7 +9,7 @@ const sendLinkToEmail = async (data) => {
     secure: false,
     auth: {
       user: "lifencreatives@gmail.com",
-      pass: "slfslfksfklsdf",
+      pass: process.env.EMAIL_P,
     },
   });
 
