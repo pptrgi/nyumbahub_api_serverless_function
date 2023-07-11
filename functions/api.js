@@ -18,13 +18,18 @@ const loginUser = require("../controllers/userControllers/loginUserController");
 const changeUserPassword = require("../controllers/userControllers/changePasswordController");
 const logoutUser = require("../controllers/userControllers/logoutUserController");
 const generateToken = require("../controllers/userControllers/generateTokenController");
-const getAllUsers = require("../controllers/userControllers/getAllUsersController");
 const {
   blockUser,
   unblockUser,
 } = require("../controllers/userControllers/block&UnblockUser");
 const emailForgotPasswordLink = require("../controllers/userControllers/emailForgotPasswordLink");
 const resetForgottenPassword = require("../controllers/userControllers/resetForgottenPassword");
+const {
+  getAllUsers,
+  getOneUser,
+  updateUser,
+  deleteUser,
+} = require("../controllers/userControllers/getUpdateDeleteUser");
 
 // property imports
 const {
@@ -65,35 +70,38 @@ router.put("/user/forgot-password-token", emailForgotPasswordLink);
 router.put("/user/block-user/:id", blockUser);
 router.put("/user/unblock-user/:id", unblockUser);
 router.put("/user/reset-password/:resetToken", resetForgottenPassword);
+router.put("/user/update/:userId", updateUser);
+router.delete("/user/delete/:userId", deleteUser);
+router.get("/user/:userId", getOneUser);
 
 // property routes
-router.post("/add", addProperty);
-router.get("/property/all-properties", getAllProperties);
-router.put("/wishlist/:propertyId", verifyAuthToken, handleWishlist);
-router.put("/add-review/:propertyId", verifyAuthToken, handleReviews);
+router.post("property/add", addProperty);
+router.get("property/property/all-properties", getAllProperties);
+router.put("property/wishlist/:propertyId", verifyAuthToken, handleWishlist);
+router.put("property/add-review/:propertyId", verifyAuthToken, handleReviews);
 router.put(
-  "/upload-image/:propertyId",
+  "property/upload-image/:propertyId",
   uploadToMulter.array("image", 10),
   resizeImage,
   uploadToCloudinary
 );
-router.delete("/delete/:propertyId", deletedProperty);
-router.get("/:propertyId", verifyAuthToken, getOneProperty);
+router.delete("property/delete/:propertyId", deletedProperty);
+router.get("property/:propertyId", verifyAuthToken, getOneProperty);
 
 // category routes
-router.post("/create", verifyAuthToken, createCategory);
-router.get("/:categoryId", getOneCategory);
-router.delete("/delete/:categoryId", deleteCategory);
+router.post("category/create", verifyAuthToken, createCategory);
+router.get("category/:categoryId", getOneCategory);
+router.delete("category/delete/:categoryId", deleteCategory);
 
 // type routes
-router.post("/create", verifyAuthToken, createType);
-router.get("/:typeId", getOneType);
-router.delete("/delete/:typeId", deleteType);
+router.post("type/create", verifyAuthToken, createType);
+router.get("type/:typeId", getOneType);
+router.delete("type/delete/:typeId", deleteType);
 
 // database connection
 mongoose.connection.once("open", () => {
   console.log("Connected to the database");
 });
-app.use("/.netlify/functions/myFunction/api", router);
+app.use("/.netlify/functions/api", router);
 
 module.exports.handler = serverless(app);
