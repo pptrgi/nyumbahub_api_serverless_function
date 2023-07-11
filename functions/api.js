@@ -75,28 +75,28 @@ router.delete("/user/delete/:userId", deleteUser);
 router.get("/user/:userId", getOneUser);
 
 // property routes
-router.post("property/add", addProperty);
-router.get("property/property/all-properties", getAllProperties);
-router.put("property/wishlist/:propertyId", verifyAuthToken, handleWishlist);
-router.put("property/add-review/:propertyId", verifyAuthToken, handleReviews);
+router.post("/property/add", addProperty);
+router.get("/property/property/all-properties", getAllProperties);
+router.put("/property/wishlist/:propertyId", verifyAuthToken, handleWishlist);
+router.put("/property/add-review/:propertyId", verifyAuthToken, handleReviews);
 router.put(
-  "property/upload-image/:propertyId",
+  "/property/upload-image/:propertyId",
   uploadToMulter.array("image", 10),
   resizeImage,
   uploadToCloudinary
 );
-router.delete("property/delete/:propertyId", deletedProperty);
-router.get("property/:propertyId", verifyAuthToken, getOneProperty);
+router.delete("/property/delete/:propertyId", deletedProperty);
+router.get("/property/:propertyId", verifyAuthToken, getOneProperty);
 
 // category routes
-router.post("category/create", verifyAuthToken, createCategory);
-router.get("category/:categoryId", getOneCategory);
-router.delete("category/delete/:categoryId", deleteCategory);
+router.post("/category/create", verifyAuthToken, createCategory);
+router.get("/category/:categoryId", getOneCategory);
+router.delete("/category/delete/:categoryId", deleteCategory);
 
 // type routes
-router.post("type/create", verifyAuthToken, createType);
-router.get("type/:typeId", getOneType);
-router.delete("type/delete/:typeId", deleteType);
+router.post("/type/create", verifyAuthToken, createType);
+router.get("/type/:typeId", getOneType);
+router.delete("/type/delete/:typeId", deleteType);
 
 // database connection
 mongoose.connection.once("open", () => {
