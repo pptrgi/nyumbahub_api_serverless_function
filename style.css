@@ -1,0 +1,197 @@
+*,
+::before,
+::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e5f7ff;
+  color: #1e73be;
+  padding: 3rem 1rem;
+  width: 100%;
+  position: relative;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.paragraph {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+}
+p {
+  font-size: medium;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.publics {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.publicHeading {
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.publicRoutes {
+  display: flex;
+  justify-content: start;
+  justify-items: start;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.routeMethod {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: column;
+}
+
+.routeURL {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  font-size: 18px;
+  color: inherit;
+}
+
+.routesGrid {
+  display: grid;
+  grid-template-columns: 1;
+  gap: 1rem;
+}
+
+h5 {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 0.25rem;
+}
+
+li {
+  list-style-type: decimal;
+}
+
+.introContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  border-top: 1px solid #1e73be;
+  border-bottom: 1px solid #1e73be;
+}
+
+.introList {
+  padding-left: 1rem;
+}
+
+.linksContainer {
+  margin-top: 4rem;
+  margin-bottom: 5rem;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+  gap: 1rem;
+}
+
+footer {
+  background-color: #1e73be;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  text-align: center;
+  border-top: 2px solid #e5f7ff;
+  color: #e5f7ff;
+}
+
+.method {
+  text-transform: uppercase;
+}
+
+@media only screen and (min-width: 450px) and (max-width: 768px) {
+  .routesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  .introContainer {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    place-content: center;
+    place-items: center;
+    align-content: center;
+    align-items: center;
+  }
+  .introHeading {
+    grid-column: 1 / span 2;
+  }
+  .introList {
+    grid-column: 3 / span 3;
+    padding-left: 0;
+    max-width: 450px;
+  }
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .routesGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+  .introContainer {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    place-content: center;
+    place-items: center;
+    align-content: center;
+    align-items: center;
+  }
+  .introHeading {
+    grid-column: 1 / span 2;
+  }
+  .introList {
+    grid-column: 3 / span 3;
+    padding-left: 0;
+    max-width: 450px;
+  }
+}
+@media only screen and (min-width: 1025px) {
+  .routesGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+  .introContainer {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    place-content: center;
+    place-items: center;
+    align-content: center;
+    align-items: center;
+  }
+  .introHeading {
+    grid-column: 1 / span 2;
+  }
+  .introList {
+    grid-column: 3 / span 3;
+    padding-left: 0;
+    max-width: 450px;
+  }
+}
