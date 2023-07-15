@@ -14,15 +14,14 @@ const generateToken = async (req, res) => {
     if (!user) return res.sendStatus(403);
 
     // verify the refresh token
-    // assign a new access token to this user
+    // assign a new access token to this user, expires in 15 minutes
     // respond with the generated token
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN, (err, decoded) => {
       if (err || user.email !== decoded.userEmail) return res.sendStatus(403);
-      console.log("decoded------", decoded);
       const accessToken = jwt.sign(
         { userEmail: decoded.userEmail },
         process.env.ACCESS_TOKEN,
-        { expiresIn: "59s" }
+        { expiresIn: "900s" }
       );
 
       res.status(200).json({ accessToken });
