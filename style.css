@@ -144,6 +144,21 @@ footer:hover {
   text-decoration: none;
 }
 
+.testRoute {
+  position: relative;
+}
+.test {
+  background-color: rgb(255, 136, 136);
+  font-size: 0.625rem;
+  color: white;
+  padding: 0.075rem 0.25rem 0.125rem 0.25rem;
+  border-radius: 5px;
+  letter-spacing: 0.75px;
+  position: absolute;
+  top: -2px;
+  right: -2.5px;
+}
+
 /* 404 Page */
 .body404 {
   display: flex;
@@ -221,6 +236,11 @@ footer:hover {
     padding-left: 0;
     max-width: 450px;
   }
+  .test {
+    position: absolute;
+    top: -2px;
+    right: 1px;
+  }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
@@ -243,6 +263,11 @@ footer:hover {
     grid-column: 3 / span 3;
     padding-left: 0;
     max-width: 450px;
+  }
+  .test {
+    position: absolute;
+    top: -2px;
+    right: 1px;
   }
 }
 @media only screen and (min-width: 1025px) {
@@ -268,5 +293,9 @@ footer:hover {
   }
   body {
     padding: 3rem 2rem;
+  }
+  .test {
+    top: -2px;
+    right: 1px;
   }
 }
