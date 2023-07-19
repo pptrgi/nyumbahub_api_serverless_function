@@ -88,8 +88,14 @@ a {
   text-decoration: none;
   color: inherit;
 }
-.url {
+
+.url,
+.copyright {
   font-size: 0.825rem;
+}
+.url:hover {
+  text-decoration: underline;
+  text-underline-offset: 2.25px;
 }
 
 .routesGrid {
@@ -134,6 +140,10 @@ footer {
   color: #e5f7ff;
 }
 
+footer:hover {
+  text-decoration: none;
+}
+
 /* 404 Page */
 .body404 {
   display: flex;
@@ -175,6 +185,7 @@ footer {
   .introList,
   .method,
   .url,
+  .copyright,
   h5 {
     font-size: 1rem;
   }
@@ -254,5 +265,8 @@ footer {
     grid-column: 3 / span 3;
     padding-left: 0;
     max-width: 450px;
+  }
+  body {
+    padding: 3rem 2rem;
   }
 }
