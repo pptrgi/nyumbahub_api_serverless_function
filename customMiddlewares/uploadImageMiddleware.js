@@ -5,7 +5,7 @@ const path = require("path");
 //
 const multerStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, "..", "public", "uploadedImages"));
+    cb(null, path.join(__dirname, "..", "public", "multerStoredImages"));
   },
   filename: (req, file, cb) => {
     const fileNameTemplate =
@@ -43,7 +43,15 @@ const resizeImage = (req, res, next) => {
       .resize(400, 400)
       .toFormat("jpeg")
       .jpeg({ quality: 90 })
-      .toFile(path.join(__dirname, "..", "public", "property", file.filename));
+      .toFile(
+        path.join(
+          __dirname,
+          "..",
+          "public",
+          "readyToUploadImages",
+          file.filename
+        )
+      );
   });
   next();
 };
