@@ -93,7 +93,7 @@ router.get(
 
 // property routes
 router.post("/property/add", verifyAuthToken, isAdmin, addProperty);
-router.get("/property/property/all-properties", getAllProperties);
+router.get("/property/all-properties", getAllProperties);
 router.put(
   "/property/wishlist/:propertyId",
   verifyAuthToken,
