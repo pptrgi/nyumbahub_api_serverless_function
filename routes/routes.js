@@ -131,12 +131,7 @@ router.get(
 
 // category routes
 router.post("/category/create", verifyAuthToken, isAdmin, createCategory);
-router.get(
-  "/category/:categoryId",
-  verifyAuthToken,
-  validateMongoId,
-  getOneCategory
-);
+router.get("/category/:categoryId", getOneCategory);
 router.delete(
   "/category/delete/:categoryId",
   verifyAuthToken,
@@ -147,7 +142,7 @@ router.delete(
 
 // type routes
 router.post("/type/create", verifyAuthToken, isAdmin, createType);
-router.get("/type/:typeId", verifyAuthToken, validateMongoId, getOneType);
+router.get("/type/:typeId", getOneType);
 router.delete(
   "/type/delete/:typeId",
   verifyAuthToken,
