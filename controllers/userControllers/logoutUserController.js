@@ -4,7 +4,6 @@ const logoutUser = async (req, res) => {
   // find a cookie called jwt
   // its okay if there are no cookies/refresh token because they are to be removed anyway
   const cookies = req.cookies;
-  console.log(cookies);
   if (!cookies?.jwt) return res.sendStatus(204); // 204
 
   // extract the refresh token from the jwt cookie
@@ -22,8 +21,6 @@ const logoutUser = async (req, res) => {
     // delete the refresh token from the db and clear the cookie
     foundUser.refreshToken = null;
     await foundUser.save();
-
-    console.log(foundUser);
 
     res.clearCookie("jwt", { httpOnly: true });
     res.sendStatus(204); // 204

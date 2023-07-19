@@ -16,14 +16,14 @@ const addProperty = async (req, res) => {
       .status(400)
       .json({ message: "All property details are required" });
 
-  // create the name slug
+  // create a name slug with slugName() function
   const slugName = (name) => {
     return String(name).toLowerCase().split(" ").join("-");
   };
+
   if (req.body.name) {
     req.body.nameSlug = slugName(req.body.name);
   }
-  console.log(req.body.nameSlug);
 
   try {
     // check if this property already exists in the database

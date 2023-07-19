@@ -21,11 +21,11 @@ const getOneUser = async (req, res) => {
 
   try {
     // find the user with passed id
-    const user = await User.findById({ _id: id });
+    const user = await User.findById(userId);
     if (!user) return res.sendStatus(404);
 
     // respond with the found user
-    res.status(200).json(foundUser);
+    res.status(200).json(user);
   } catch (error) {
     console.log(error);
     res.sendStatus(500);
@@ -63,12 +63,15 @@ const updateUser = async (req, res) => {
 
 // DELETE USER
 const deleteUser = async (req, res) => {
-  const { userId } = req.params;
-  if (!userId) return res.sendStatus(401);
+  const { userEmail } = req; // after login
+  if (!userEmail) return res.sendStatus(403);
 
   try {
-    const foundUser = await User.findByIdAndDelete(id);
+    const foundUser = await User.findOne({ email: userEmail });
     if (!foundUser) return res.sendStatus(204); // 204
+
+    // delete user
+    await User.findByIdAndDelete(foundUser._id);
 
     res.sendStatus(204);
   } catch (error) {

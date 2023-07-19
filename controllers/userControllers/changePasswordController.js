@@ -11,14 +11,11 @@ const changeUserPassword = async (req, res) => {
     const currentUser = await User.findOne({ email });
     if (!currentUser) return res.sendStatus(401);
 
-    console.log(currentUser);
-
     // hash the provided password and update user's details
     const hashedPassword = bcrypt.hashSync(newPassword, 10);
     currentUser.password = hashedPassword;
-    const updatedUser = await currentUser.save();
+    await currentUser.save();
 
-    console.log(currentUser);
     res.status(200).json({ success: "password updated successfully" });
   } catch (error) {
     console.log(error);

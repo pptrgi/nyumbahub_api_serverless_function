@@ -26,7 +26,7 @@ const registerUser = async (req, res) => {
 
     // encrypt the user's password
     if (req.body.password) {
-      req.body.password = await bcrypt.hashSync(req.body.password, 10);
+      req.body.password = bcrypt.hashSync(req.body.password, 10);
     }
 
     // create a new user with the provided details
