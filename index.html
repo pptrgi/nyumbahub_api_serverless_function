@@ -17,20 +17,27 @@
         <ul>
           <li>
             <strong><a href="#publicEndpoints">Public Endpoints</a></strong> has
-            the route endpoints that are accessible by all users without signing
-            in.
+            the route endpoints that are accessible by all users.
           </li>
           <li>
             Routes that are not directly available to the public, or those on
             <strong
               ><a href="#protectedEndpoints">Protected Endpoints</a></strong
             >, either require signing in first or can only be accessed by
-            special/priviledged users.
+            special/privileged users.
           </li>
           <li>
             To access majority of routes you'll need to
             <strong>sign in</strong>. If you haven't registered already,
             <strong>register</strong> first.
+          </li>
+          <li>
+            Click on a route to visit it, looks like so,
+            <strong><span class="url">/route/endpoint</span></strong>
+          </li>
+          <li>
+            For POST in user register and login and other HTTP methods including
+            PUT and DEL, you will need Postman or Thunder Client etc
           </li>
         </ul>
       </div>
@@ -41,22 +48,23 @@
       <div class="route">
         <div class="routeMethod">
           <span class="method">get</span>
-          <span class="method">get</span>
-          <span class="method">get</span>
+          <span class="method">post</span>
+          <span class="method">post</span>
         </div>
         <div class="routeURL">
           <span class="url"
-            ><a href="/.netlify/functions/api/property/all-properties"
+            ><a
+              href="/.netlify/functions/api/property/all-properties?page=1&limit=8&sort=nameSlug&fields=name,type,price,category,bedrooms,bathrooms,features,location"
               >/property/all-properties</a
             ></span
           >
           <span class="url"
-            ><a href="/.netlify/functions/api/category/all"
-              >/category/all</a
+            ><a href="/.netlify/functions/api/user/register"
+              >/user/register</a
             ></span
           >
           <span class="url"
-            ><a href="/.netlify/functions/api/type/all">/type/all</a></span
+            ><a href="/.netlify/functions/api/user/login">/user/login</a></span
           >
         </div>
       </div>
@@ -69,8 +77,6 @@
           <h5>Users</h5>
           <div class="route">
             <div class="routeMethod">
-              <span class="method">post</span>
-              <span class="method">post</span>
               <span class="method">put</span>
               <span class="method">get</span>
               <span class="method">get</span>
@@ -84,16 +90,6 @@
               <span class="method">get</span>
             </div>
             <div class="routeURL">
-              <span class="url"
-                ><a href="/.netlify/functions/api/user/register"
-                  >/user/register</a
-                ></span
-              >
-              <span class="url"
-                ><a href="/.netlify/functions/api/user/login"
-                  >/user/login</a
-                ></span
-              >
               <span class="url"
                 ><a href="/.netlify/functions/api/user/change-password"
                   >/user/change-password</a
@@ -273,7 +269,7 @@
       </div>
     </div>
     <footer>
-      <div class="url">
+      <div class="copyright">
         &#169; A product of <strong>Lifen Creatives</strong>. All rights
         reserved.
       </div>
