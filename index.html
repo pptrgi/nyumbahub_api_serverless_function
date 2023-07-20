@@ -16,28 +16,25 @@
       <div class="introList">
         <ul>
           <li>
-            <strong><a href="#publicEndpoints">Public Endpoints</a></strong> has
-            the route endpoints that are accessible by all users.
-          </li>
-          <li>
-            Routes that are not directly available to the public, or those on
+            <strong><a href="#publicEndpoints">Public Endpoints</a></strong>
+            routes are accessible by all users.
             <strong
               ><a href="#protectedEndpoints">Protected Endpoints</a></strong
-            >, either require signing in first or can only be accessed by
-            special/privileged users.
+            >
+            routes are not directly available to the public and either require
+            signing in first or can only be accessed by special/privileged users
           </li>
           <li>
-            To access majority of routes you'll need to
-            <strong>sign in</strong>. If you haven't registered already,
-            <strong>register</strong> first.
+            Click on a route to visit it. <strong>Sign in</strong> to access
+            majority of routes, <strong>register</strong> first if you haven't
           </li>
           <li>
-            Click on a route to visit it, looks like so,
-            <strong><span class="url">/route/endpoint</span></strong>
+            Use a REST Client like Postman, Swagger, Thunder Client etc for POST
+            in user register and login, and other HTTP methods but GET
           </li>
           <li>
-            For POST in user register and login and other HTTP methods including
-            PUT and DEL, you will need Postman or Thunder Client etc
+            Routes with <strong>"test"</strong> tag provide a sneak peek of
+            returned route data
           </li>
         </ul>
       </div>
@@ -54,7 +51,7 @@
         <div class="routeURL">
           <span class="url"
             ><a
-              href="/.netlify/functions/api/property/all-properties?page=1&limit=8&sort=nameSlug&fields=name,type,price,category,bedrooms,bathrooms,features,location"
+              href="/.netlify/functions/api/property/all-properties?page=1&limit=10&sort=nameSlug&fields=name,description,type,price,category,bedrooms,bathrooms,features,location,-_id"
               >/property/all-properties</a
             ></span
           >
