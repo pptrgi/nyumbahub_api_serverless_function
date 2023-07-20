@@ -66,12 +66,19 @@ const deleteUser = async (req, res) => {
   const { userEmail } = req; // after login
   if (!userEmail) return res.sendStatus(403);
 
+  const { userId } = req.params;
+  if (!userId) return res.sendStatus(403);
+
   try {
     const foundUser = await User.findOne({ email: userEmail });
     if (!foundUser) return res.sendStatus(204); // 204
 
+    // match the signed in user id with the passed url param id
+    const matchingId = foundUser._id.toString() === userId.toString();
+    if (!matchingId) return res.sendStatus(403);
+
     // delete user
-    await User.findByIdAndDelete(foundUser._id);
+    await User.findByIdAndDelete(userId);
 
     res.sendStatus(204);
   } catch (error) {

@@ -12,7 +12,7 @@ const getOneType = async (req, res) => {
 
   try {
     // find if the type exists
-    const foundType = await Type.findById(typeId);
+    let foundType = await Type.findById(typeId).select(["-__v", "-_id"]);
     if (!foundType) return res.sendStatus(404);
 
     res.status(200).json(foundType);
