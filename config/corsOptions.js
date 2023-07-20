@@ -2,9 +2,7 @@ const allowedOrigins = ["https://nyumbahub.netlify.app"];
 
 const corsOptions = {
   origin: (origin, callback) => {
-    if (allowedOrigins.includes(origin)) {
-      // remember to add !origin in a dev environment
-
+    if (allowedOrigins.includes(origin) || !origin) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
