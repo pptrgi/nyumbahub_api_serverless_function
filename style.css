@@ -140,10 +140,6 @@ footer {
   color: #e5f7ff;
 }
 
-footer:hover {
-  text-decoration: none;
-}
-
 .testRoute {
   position: relative;
 }
@@ -156,7 +152,7 @@ footer:hover {
   letter-spacing: 0.75px;
   position: absolute;
   top: -2px;
-  right: -3px;
+  right: -3.75px;
 }
 
 /* 404 Page */
