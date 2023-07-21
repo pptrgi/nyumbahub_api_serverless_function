@@ -1,6 +1,7 @@
 const multer = require("multer");
 const sharp = require("sharp");
 const path = require("path");
+const fs = require("fs");
 
 //
 const multerStorage = multer.diskStorage({
@@ -35,24 +36,47 @@ const uploadToMulter = multer({
   limits: { fileSize: 5000000 },
 });
 
-const resizeImage = (req, res, next) => {
+const resizeImage = async (req, res, next) => {
   if (!req.files) return next();
-  req.files.map(async (file) => {
-    console.log(file);
-    await sharp(file.path)
-      .resize(400, 400)
-      .toFormat("jpeg")
-      .jpeg({ quality: 90 })
-      .toFile(
-        path.join(
-          __dirname,
-          "..",
-          "public",
-          "readyToUploadImages",
-          file.filename
+  await Promise.all(
+    req.files.map(async (file) => {
+      console.log("resize files", file);
+
+      await sharp(file.path)
+        .resize(400, 400)
+        .toFormat("jpeg")
+        .jpeg({ quality: 90 })
+        .toFile(
+          path.join(
+            __dirname,
+            "..",
+            "public",
+            "readyToUploadImages",
+            file.filename
+          )
         )
-      );
-  });
+        .then(() => {
+          file.path = path.join(
+            __dirname,
+            "..",
+            "public",
+            "readyToUploadImages",
+            file.filename
+          );
+
+          fs.unlinkSync(
+            path.join(
+              __dirname,
+              "..",
+              "public",
+              "multerStoredImages",
+              file.filename
+            )
+          );
+        });
+    })
+  );
+
   next();
 };
 
