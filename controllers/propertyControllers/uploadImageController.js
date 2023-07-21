@@ -1,11 +1,13 @@
 const cloudinaryUpload = require("../../config/uploadImageConfig");
 const Property = require("../../models/PropertyModel");
+const fs = require("fs");
 
 const uploadToCloudinary = async (req, res) => {
   const { propertyId } = req.params;
   if (!propertyId) return res.sendStatus(401);
 
   const files = req.files;
+  console.log("uploading files - ", files);
 
   try {
     // upload each image file to cloudinary and add the returned image URL to the cloudUrls array
@@ -13,8 +15,10 @@ const uploadToCloudinary = async (req, res) => {
     const cloudUrls = [];
     for (let file of files) {
       const localPath = file.path;
+      console.log("localPath - ", localPath);
       const cloudUrl = await cloudinaryUpload(localPath); // returns a secure image URL
       cloudUrls.push(cloudUrl);
+      fs.unlinkSync(localPath);
     }
 
     // find the property being uploaded images for
