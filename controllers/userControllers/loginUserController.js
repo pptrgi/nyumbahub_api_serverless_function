@@ -41,7 +41,7 @@ const loginUser = async (req, res) => {
       httpOnly: true,
       maxAge: 72 * 60 * 60 * 1000,
     });
-    res.status(200).json({ accessToken });
+    res.status(200).json({ user: foundUser, accessToken });
   } catch (error) {
     console.log(error);
     res.sendStatus(500);

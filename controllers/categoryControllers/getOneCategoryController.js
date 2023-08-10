@@ -5,10 +5,9 @@ const getOneCategory = async (req, res) => {
   if (!categoryId) return res.sendStatus(401);
 
   try {
-    const foundCategory = await Category.findById(categoryId).select([
-      "-_id",
-      "-__v",
-    ]);
+    const foundCategory = await Category.findById(categoryId)
+      .select(["-_id", "-__v"])
+      .populate("properties.propertyId");
     if (!foundCategory) return res.sendStatus(404);
 
     res.status(200).json(foundCategory);

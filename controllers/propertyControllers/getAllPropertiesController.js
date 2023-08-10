@@ -9,13 +9,11 @@ const getAllProperties = async (req, res) => {
 
   try {
     // FILTERING
-
     // after exempting sort, page, limit and fields keys, the rest of the keys are for filtering
-    // will reach the database
+    // they will query the database
     let queryStrings = JSON.stringify(queries);
 
-    // search for logical operta and replace them with Mongodb commands
-    // just to match with the mongo commnads
+    // search for logical operators then match and replace them with Mongodb commands
     queryStrings = queryStrings.replace(
       /\b(gt|gte|lt|lte)\b/g,
       (match) => `$${match}`
