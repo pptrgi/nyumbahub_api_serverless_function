@@ -22,6 +22,7 @@ const {
   updateUser,
   deleteUser,
 } = require("../controllers/userControllers/getUpdateDeleteUser");
+const getUserWishlist = require("../controllers/userControllers/getUserWishlist");
 
 // property imports
 const addProperty = require("../controllers/propertyControllers/addPropertyController");
@@ -55,6 +56,7 @@ router.put("/user/change-password", verifyAuthToken, changeUserPassword);
 router.get("/user/logout", verifyAuthToken, logoutUser);
 router.get("/user/generate-token", verifyAuthToken, generateToken);
 router.get("/user/all", verifyAuthToken, isAdmin, getAllUsers);
+router.get("/user/wishlist", verifyAuthToken, getUserWishlist);
 router.put("/user/forgot-password-token", emailForgotPasswordLink);
 router.put(
   "/user/block-user/:id",
@@ -122,16 +124,11 @@ router.delete(
   validateMongoId,
   deleteProperty
 );
-router.get(
-  "/property/:propertyId",
-  verifyAuthToken,
-  validateMongoId,
-  getOneProperty
-);
+router.get("/property/:propertyId", validateMongoId, getOneProperty);
 
 // category routes
 router.post("/category/create", verifyAuthToken, isAdmin, createCategory);
-router.get("/category/:categoryId", getOneCategory);
+router.get("/category/:categoryId", validateMongoId, getOneCategory);
 router.delete(
   "/category/delete/:categoryId",
   verifyAuthToken,
@@ -142,7 +139,7 @@ router.delete(
 
 // type routes
 router.post("/type/create", verifyAuthToken, isAdmin, createType);
-router.get("/type/:typeId", getOneType);
+router.get("/type/:typeId", validateMongoId, getOneType);
 router.delete(
   "/type/delete/:typeId",
   verifyAuthToken,
