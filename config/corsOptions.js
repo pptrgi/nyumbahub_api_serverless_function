@@ -1,4 +1,7 @@
-const allowedOrigins = ["https://nyumbahub.netlify.app"];
+const allowedOrigins = [
+  "https://nyumbahub.netlify.app",
+  "https://nh-pptrgitonga-gmailcom.vercel.app",
+];
 
 const corsOptions = {
   origin: (origin, callback) => {
