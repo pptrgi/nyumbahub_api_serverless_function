@@ -14,7 +14,7 @@ const logoutUser = async (req, res) => {
     // fine if the user doesn't exist, delete the cookie they have though
     const foundUser = await User.findOne({ refreshToken });
     if (!foundUser) {
-      res.clearCookie("jwt", { httpOnly: true });
+      res.clearCookie("jwt", { httpOnly: true, secure: true });
       res.sendStatus(204); // 204
     }
 
@@ -22,7 +22,7 @@ const logoutUser = async (req, res) => {
     foundUser.refreshToken = null;
     await foundUser.save();
 
-    res.clearCookie("jwt", { httpOnly: true });
+    res.clearCookie("jwt", { httpOnly: true, secure: true });
     res.sendStatus(204); // 204
   } catch (error) {
     console.log(error);

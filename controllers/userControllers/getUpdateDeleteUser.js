@@ -34,6 +34,9 @@ const getOneUser = async (req, res) => {
 
 // UPDATE USER
 const updateUser = async (req, res) => {
+  const { userId } = req.params;
+  if (!userId) return res.sendStatus(400);
+
   // from the logged in user, get their email
   const userEmail = req.userEmail;
   if (!userEmail) return res.sendStatus(401);
@@ -42,6 +45,9 @@ const updateUser = async (req, res) => {
     // find the user with this email
     const currentUser = await User.findOne({ email: userEmail });
     if (!currentUser) return res.sendStatus(403);
+
+    const matchingId = currentUser._id.toString() === userId.toString();
+    if (!matchingId) return res.sendStatus(403);
 
     const updateUser = await User.findByIdAndUpdate(
       currentUser._id,
