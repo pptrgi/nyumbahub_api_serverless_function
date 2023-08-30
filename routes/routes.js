@@ -52,7 +52,6 @@ const deleteType = require("../controllers/typeControllers/deleteTypeController"
 // user routes
 router.post("/user/register", registerUser);
 router.post("/user/login", loginUser);
-router.put("/user/change-password", verifyAuthToken, changeUserPassword);
 router.get("/user/logout", verifyAuthToken, logoutUser);
 router.get("/user/generate-token", verifyAuthToken, generateToken);
 router.get("/user/all", verifyAuthToken, isAdmin, getAllUsers);
@@ -73,6 +72,13 @@ router.put(
   unblockUser
 );
 router.put("/user/reset-password/:resetToken", resetForgottenPassword);
+router.put(
+  "/user/change-password/:userId",
+  verifyAuthToken,
+  validateMongoId,
+  changeUserPassword
+);
+
 router.put(
   "/user/update/:userId",
   verifyAuthToken,
