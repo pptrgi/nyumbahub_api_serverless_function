@@ -326,3 +326,9 @@ footer {
     right: 1px;
   }
 }
+
+/* Change the text-highlighting color */
+::selection {
+  background-color: #00aeff;
+  color: #fafafa;
+}
