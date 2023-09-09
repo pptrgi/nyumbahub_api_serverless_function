@@ -1,6 +1,6 @@
 const allowedOrigins = [
-  "https://nyumbahub.netlify.app",
   "https://nyumbahub.vercel.app",
+  "http://localhost:3000/",
 ];
 
 const corsOptions = {
