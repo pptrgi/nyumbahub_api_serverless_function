@@ -1,7 +1,4 @@
-const allowedOrigins = [
-  "https://nyumbahub.vercel.app",
-  "http://localhost:3000/",
-];
+const allowedOrigins = ["https://nyumbahub.vercel.app"];
 
 const corsOptions = {
   origin: (origin, callback) => {
