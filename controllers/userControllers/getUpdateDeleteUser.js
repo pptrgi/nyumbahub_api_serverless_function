@@ -60,7 +60,15 @@ const updateUser = async (req, res) => {
       { new: true }
     );
 
-    res.status(201).json(updateUser);
+    res.status(201).json({
+      user: {
+        firstName: updateUser.firstName,
+        lastName: updateUser.lastName,
+        email: updateUser.email,
+        phone: updateUser.phone,
+        id: updateUser._id,
+      },
+    });
   } catch (error) {
     console.log(error);
     res.sendStatus(500);

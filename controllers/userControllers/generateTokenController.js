@@ -21,7 +21,7 @@ const generateToken = async (req, res) => {
       const accessToken = jwt.sign(
         { userEmail: decoded.userEmail },
         process.env.ACCESS_TOKEN,
-        { expiresIn: "900s" }
+        { expiresIn: "7320s" } // 2 hours + 2 minutes
       );
 
       res.status(200).json({ accessToken });
