@@ -14,6 +14,12 @@
   --cta-color: #00aeff;
 }
 
+/* Change the text-highlighting color */
+::selection {
+  background-color: #00aeff;
+  color: #fafafa;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -180,6 +186,14 @@ footer {
   color: white;
 }
 
+#frontendLink {
+  color: #00aeff;
+}
+
+.paragraphLink :hover {
+  color: #00aeff;
+}
+
 /* 404 Page */
 .body404 {
   display: flex;
@@ -191,10 +205,6 @@ footer {
   width: 100vw;
   background-color: var(--body-color);
   color: var(--text-color);
-}
-
-#frontendLink {
-  color: #00aeff;
 }
 
 .title404 {
@@ -325,10 +335,4 @@ footer {
     top: -2px;
     right: 1px;
   }
-}
-
-/* Change the text-highlighting color */
-::selection {
-  background-color: #00aeff;
-  color: #fafafa;
 }

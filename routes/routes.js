@@ -52,7 +52,7 @@ const deleteType = require("../controllers/typeControllers/deleteTypeController"
 // user routes
 router.post("/user/register", registerUser);
 router.post("/user/login", loginUser);
-router.get("/user/logout", verifyAuthToken, logoutUser);
+router.put("/user/logout", verifyAuthToken, logoutUser);
 router.get("/user/generate-token", verifyAuthToken, generateToken);
 router.get("/user/all", verifyAuthToken, isAdmin, getAllUsers);
 router.get("/user/wishlist", verifyAuthToken, getUserWishlist);
