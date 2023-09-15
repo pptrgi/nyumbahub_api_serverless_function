@@ -5,7 +5,9 @@ const getUserWishlist = async (req, res) => {
   if (!userEmail) return res.sendStatus(400);
 
   try {
-    const user = await User.findOne({ email: userEmail }).populate("wishlist");
+    const user = await User.findOne({ email: userEmail }).populate(
+      "wishlist.propertyId"
+    );
     if (!user) return res.sendStatus(401);
 
     const userWishlist = user.wishlist;
