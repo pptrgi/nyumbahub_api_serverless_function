@@ -194,6 +194,10 @@ footer {
   color: #00aeff;
 }
 
+#test-tag {
+  color: #00aeff;
+}
+
 /* 404 Page */
 .body404 {
   display: flex;
