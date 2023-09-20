@@ -14,7 +14,7 @@ The backend accepts URL query from a request to query the database and return fi
 
 The API also includes a UI where users can interact with it efficiently. [Visit the API](https://nyumbahub.netlify.app)
 
-Also see the [overall application's ReadMe](https://github/ptrgi/nyumbahub-frontend)
+Also see the [overall application's ReadMe](https://github.com/pptrgi/nyumbahub-frontend)
 
 ##
 
@@ -67,4 +67,4 @@ application to your liking.
 
 ### Contributing & Acknowledgements
 
-[See the overall application's contributing and acknowledgements](https://github/ptrgi/nyumbahub_api_serverless_function)
+[See the overall application's contributing and acknowledgements](https://github.com/pptrgi/nyumbahub_api_serverless_function)
